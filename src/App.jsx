@@ -21,7 +21,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(todo.title.length <= 0) {
-      toast.success('Please give a title.', {
+      toast.error('Please give a title.', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -31,6 +31,7 @@ function App() {
         progress: undefined,
         theme: "light",
         });
+        return;
     }
     const getTodos = JSON.parse(localStorage.getItem('todo')) || [];
     const finalTodo = {...todo, isActive : true};
