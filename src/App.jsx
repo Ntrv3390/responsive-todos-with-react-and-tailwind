@@ -41,6 +41,12 @@ function App() {
     setLoading(true);
   } 
 
+  const handleKeyDown = (e) => {
+    if(e.key === 'Enter') {
+      handleSubmit(e);
+    }
+  }
+
   return (
     <>
       <div className='bg-rose-100 min-h-screen'>
@@ -49,7 +55,7 @@ function App() {
         <div className='flex justify-center items-center mt-10'>
           <form className='flex justify-center items-start flex-col'>
             <label className='text-stone-700 font-sans font-semibold mb-1' htmlFor="title">Enter title:</label>
-            <input value={todo.title} className='text-stone-700 shadow-lg font-semibold rounded-lg font-sans py-3 px-6 lg:w-[34rem] w-[25rem]' onChange={handleChange} type="text" name="title" id="title" />
+            <input value={todo.title} onKeyDown={handleKeyDown} className='text-stone-700 shadow-lg font-semibold rounded-lg font-sans py-3 px-6 lg:w-[34rem] w-[25rem]' onChange={handleChange} type="text" name="title" id="title" />
             <button type="submit" className='bg-purple-400 shadow-lg text-white font-sans font-semibold px-8 mt-6 py-2 rounded-lg' onClick={handleSubmit}>Add</button>
           </form>
         </div> 
