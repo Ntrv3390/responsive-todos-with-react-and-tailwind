@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Todo from './components/Todo';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const[todo, setTodo] = useState({title: ''});
@@ -22,7 +24,16 @@ function App() {
     const finalTodo = {...todo, isActive : true};
     const addTodo = [...getTodos, finalTodo];
     localStorage.setItem('todo', JSON.stringify(addTodo));
-    alert('Todo added successfully');
+    toast.success('Todo added successfully', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
     setTodo({ title: '' });
     setLoading(true);
   }
@@ -36,8 +47,29 @@ function App() {
     currTodo.isActive = !currTodo.isActive;
     setList([...list, currTodo]);
     localStorage.setItem('todo', JSON.stringify(list));
-    const status = currTodo.isActive ? ' activated ' : ' deactivated '
-    alert('Todo ' + id + status + ' successfully');
+    if(currTodo.isActive) {
+      toast.success('Todo (' + id + ')' + ' activated successfully.' , {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    } else {
+      toast.warn('Todo (' + id + ')' + ' deactivated successfully.' , {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
     setLoading(true);
   } 
 
@@ -68,6 +100,7 @@ function App() {
           }
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }
