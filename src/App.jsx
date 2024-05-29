@@ -20,12 +20,13 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(todo.title.length <= 0) return;
     const getTodos = JSON.parse(localStorage.getItem('todo')) || [];
     const finalTodo = {...todo, isActive : true};
     const addTodo = [...getTodos, finalTodo];
     localStorage.setItem('todo', JSON.stringify(addTodo));
     toast.success('Todo added successfully', {
-      position: "bottom-right",
+      position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -49,7 +50,7 @@ function App() {
     localStorage.setItem('todo', JSON.stringify(list));
     if(currTodo.isActive) {
       toast.success('Todo (' + id + ')' + ' activated successfully.' , {
-        position: "bottom-right",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -60,7 +61,7 @@ function App() {
         });
     } else {
       toast.warn('Todo (' + id + ')' + ' deactivated successfully.' , {
-        position: "bottom-right",
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
