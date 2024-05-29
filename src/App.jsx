@@ -20,7 +20,18 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(todo.title.length <= 0) return;
+    if(todo.title.length <= 0) {
+      toast.success('Please give a title.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
     const getTodos = JSON.parse(localStorage.getItem('todo')) || [];
     const finalTodo = {...todo, isActive : true};
     const addTodo = [...getTodos, finalTodo];
