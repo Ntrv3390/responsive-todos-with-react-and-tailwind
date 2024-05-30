@@ -10,19 +10,6 @@ function App() {
   const[loading, setLoading] = useState(false);
 
   useEffect(() => {
-    toast('Pro tip: Click on the to-do status button to make it done.' , {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      });
-  }, [])
-
-  useEffect(() => {
     function getLocalStorageData() {
       const allTodosData = JSON.parse(localStorage.getItem('todo')) || [];
       setList(allTodosData);
