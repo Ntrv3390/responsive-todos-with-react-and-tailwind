@@ -10,6 +10,19 @@ function App() {
   const[loading, setLoading] = useState(false);
 
   useEffect(() => {
+    toast('Pro tip: Click on the to-do status button to make it done.' , {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }, [])
+
+  useEffect(() => {
     function getLocalStorageData() {
       const allTodosData = JSON.parse(localStorage.getItem('todo')) || [];
       setList(allTodosData);
@@ -34,7 +47,7 @@ function App() {
         return;
     }
     const getTodos = JSON.parse(localStorage.getItem('todo')) || [];
-    const finalTodo = {...todo, isActive : true};
+    const finalTodo = {...todo, isActive : true, date: Date.now()};
     const addTodo = [...getTodos, finalTodo];
     localStorage.setItem('todo', JSON.stringify(addTodo));
     toast.success('Todo added successfully', {
@@ -107,9 +120,10 @@ function App() {
         <hr className='h-px mx-auto my-8 w-[20rem] lg:w-[40rem] bg-gray-400 border-0'/>
         <div className='flex mx-[12rem] justify-center flex-wrap items-center max-w-[70rem]'>
           {
-            list.map((todo, i) => (
-              <Todo key={i} title={todo.title} id={i} isActive={todo.isActive} deactiveTodo={deactiveTodo} />
-            ))
+            list.slice().reverse().map((todo, i) => {
+              const reversedIndex = list.length - i - 1;
+              return <Todo key={reversedIndex} date={todo.date} title={todo.title} id={reversedIndex} isActive={todo.isActive} deactiveTodo={deactiveTodo} />
+            })
           }
         </div>
       </div>
