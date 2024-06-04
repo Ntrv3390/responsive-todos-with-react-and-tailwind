@@ -105,7 +105,7 @@ function App() {
           </form>
         </div> 
         <hr className='h-px mx-auto my-8 w-[20rem] lg:w-[40rem] bg-gray-400 border-0'/>
-        <div className='flex justify-center flex-wrap items-center max-w-[70rem]'>
+        <div className='flex mx-auto justify-center flex-wrap items-center max-w-[70rem]'>
           {
             list.slice().reverse().map((todo, i) => {
               const reversedIndex = list.length - i - 1;
