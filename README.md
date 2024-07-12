@@ -1,12 +1,6 @@
-# React + Vite
+# Welcome to React Todo's
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Easily add your todos here on `https://todos-by-mohammed.vercel.app`, no login required.
+Don't worry your todo's will be saved locally.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-# Live url
-
-https://todos-by-mohammed.vercel.app
+### Thank you for your visit!
